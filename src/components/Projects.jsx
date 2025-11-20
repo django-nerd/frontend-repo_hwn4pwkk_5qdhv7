@@ -3,19 +3,19 @@ import { Github, ExternalLink } from 'lucide-react'
 const projects = [
   {
     title: 'Interactive Portfolio',
-    desc: 'This portfolio with 3D hero, smooth scrolling, and contact form.',
-    tech: ['React', 'Tailwind', 'FastAPI'],
+    desc: 'Immersive 3D hero, diagonal atmospheric background, and polished motion system.',
+    tech: ['React', 'Tailwind', 'FastAPI', 'Framer Motion'],
     links: { github: '#', demo: '#' },
   },
   {
     title: 'Task Manager',
-    desc: 'Simple CRUD app to manage tasks with tags and filters.',
+    desc: 'CRUD with optimistic UI, tag filters, and keyboard navigation.',
     tech: ['FastAPI', 'MongoDB', 'React'],
     links: { github: '#', demo: '#' },
   },
   {
     title: 'UI Component Kit',
-    desc: 'A set of reusable components styled with Tailwind.',
+    desc: 'Motion-first components with accessibility baked in.',
     tech: ['React', 'Tailwind'],
     links: { github: '#', demo: '#' },
   },
@@ -27,14 +27,15 @@ function Badge({ children }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-24">
+    <section id="projects" className="relative section-pad">
+      <div className="absolute inset-0 pointer-events-none select-none opacity-[0.08] bg-[radial-gradient(600px_200px_at_0%_50%,rgba(37,99,235,0.6),transparent_60%)] dark:opacity-[0.18]"></div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Projects</h2>
-        <p className="mt-2 text-slate-600 dark:text-slate-300">Some things I've built or tinkered with.</p>
+        <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white reveal">Projects</h2>
+        <p className="mt-2 text-slate-600 dark:text-slate-300 reveal reveal-delay-1">Selected work highlighting craft, usability, and speed.</p>
 
         <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p) => (
-            <div key={p.title} className="group p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 backdrop-blur hover:shadow-lg transition-shadow">
+          {projects.map((p, idx) => (
+            <div key={p.title} className="group p-6 rounded-2xl glass hover:shadow-xl hover:translate-y-[-3px] transition-all duration-300 reveal" style={{animationDelay: `${idx * 90}ms`}}>
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{p.title}</h3>
